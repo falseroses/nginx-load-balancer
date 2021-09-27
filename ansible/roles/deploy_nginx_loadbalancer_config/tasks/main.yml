@@ -1,0 +1,5 @@
+---
+# tasks file for deploy_nginx_config_and_letsencrypt_cert
+- name: Copy Nginx Config
+  copy: src=nginx.conf dest=/etc/nginx mode=0555
+  notify: Restart Nginx

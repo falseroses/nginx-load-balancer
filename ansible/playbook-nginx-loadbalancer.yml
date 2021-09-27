@@ -34,8 +34,14 @@
   - name: Restart Nginx
     service: name=nginx state=restarted
 
-- name: Deploy Nginx Config
-  hosts: all
+- name: Deploy Nginx Config For Webserver
+  hosts: webserv
   become: yes
   roles:
     - deploy_nginx_config
+
+- name: Deploy Nginx Config For Webserver
+  hosts: load-balancer
+  become: yes
+  roles:
+    - deploy_nginx_loadbalancer_config
