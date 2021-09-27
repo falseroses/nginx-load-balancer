@@ -10,7 +10,7 @@ resource "aws_instance" "frontend_webserv" {
   vpc_security_group_ids = [aws_security_group.webserv_security_group.id]
 
   tags = {
-    Name = "frontend_webserv"
+    Name = "frontend_webserv_${count.index}"
   }
 }
 
