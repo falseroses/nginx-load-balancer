@@ -9,7 +9,7 @@
       amazon-linux-extras enable nginx1 epel
       yum clean metadata
 
-  - name: Install Nginx, Git, Epel and Certbot
+  - name: Install Nginx, Git and Epel
     yum: name={{ item }} state=latest
     loop:
       - nginx
