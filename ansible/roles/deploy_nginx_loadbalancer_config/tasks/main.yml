@@ -7,3 +7,6 @@
 - name: Copy Nginx Upstream Servers
   copy: src=upstream.conf dest=/etc/nginx/conf.d mode=0555
   notify: Restart Nginx
+
+- name: Generate HTTPS Certificates
+  shell: certbot --nginx -n --agree-tos --email sasha.duminskiy@gmail.com --domains falseroses.xyz

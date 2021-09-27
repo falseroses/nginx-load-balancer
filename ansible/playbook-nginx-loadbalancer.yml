@@ -50,6 +50,7 @@
         - nginx
         - git
         - epel-release
+        - certbot-nginx
 
     - name: Start WebServer and Enable Nginx Service
       service: name=nginx state=started enabled=yes

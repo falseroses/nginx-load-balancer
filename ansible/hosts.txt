@@ -1,5 +1,5 @@
 [webserv]
-webserv1 ansible_host=3.68.113.151
-webserv2 ansible_host=3.68.113.242
+webserv1 ansible_host=18.156.134.10
+webserv2 ansible_host=3.67.38.213
 [load_balancer]
-loadbalancer ansible_host=3.69.44.166
+loadbalancer ansible_host=3.65.18.225
