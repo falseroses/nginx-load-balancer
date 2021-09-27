@@ -1,6 +1,6 @@
 ---
 - name: Install Nginx and Clone Website
-  hosts: all
+  hosts: webserv
   become: yes
 
   tasks:
@@ -34,14 +34,34 @@
   - name: Restart Nginx
     service: name=nginx state=restarted
 
+- name: Install Nginx for Load-Balancer
+  hosts: load_balancer
+  become: yes
+
+  tasks:
+    - name: Enable Amazon-Linux-Extras Packages
+      shell: |
+        amazon-linux-extras enable nginx1 epel
+        yum clean metadata
+
+    - name: Install Nginx, Git and Epel
+      yum: name={{ item }} state=latest
+      loop:
+        - nginx
+        - git
+        - epel-release
+
+    - name: Start WebServer and Enable Nginx Service
+      service: name=nginx state=started enabled=yes
+
 - name: Deploy Nginx Config For Webserver
   hosts: webserv
   become: yes
   roles:
     - deploy_nginx_config
 
-- name: Deploy Nginx Config For Webserver
-  hosts: load-balancer
+- name: Deploy Nginx Config For Load-Balancer
+  hosts: load_balancer
   become: yes
   roles:
     - deploy_nginx_loadbalancer_config

@@ -3,3 +3,7 @@
 - name: Copy Nginx Config
   copy: src=nginx.conf dest=/etc/nginx mode=0555
   notify: Restart Nginx
+
+- name: Copy Nginx Upstream Servers
+  copy: src=upstream.conf dest=/etc/nginx/conf.d mode=0555
+  notify: Restart Nginx
