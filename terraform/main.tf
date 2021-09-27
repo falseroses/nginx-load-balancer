@@ -2,9 +2,9 @@ provider "aws" {
   region                  = var.aws_region
 }
 
-resource "aws_instance" "rontend_webserv" {
+resource "aws_instance" "frontend_webserv" {
   count = 2
-  ami           = "ami-0bad4a5e987bdebde"
+  ami           = "ami-07df274a488ca9195"
   instance_type = "t2.micro"
   key_name      = "falseroses-key-Frankfurt"
   vpc_security_group_ids = [aws_security_group.webserv_security_group.id]
@@ -15,7 +15,7 @@ resource "aws_instance" "rontend_webserv" {
 }
 
 resource "aws_instance" "load_balancer" {
-  ami           = "ami-0bad4a5e987bdebde"
+  ami           = "ami-07df274a488ca9195"
   instance_type = "t2.micro"
   key_name      = "falseroses-key-Frankfurt"
   vpc_security_group_ids = [aws_security_group.webserv_security_group.id]
